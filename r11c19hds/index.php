@@ -51,20 +51,20 @@
 		  <div class="modal-body">
 			<form>
 			  <div class="mb-3">
-				<label for="school-name" class="col-form-label">Name:</label>
-				<input type="text" class="form-control" id="school-name">
+				<label for="name" class="col-form-label">Name:</label>
+				<input type="text" class="form-control" id="name">
 				<input type="hidden" id="isAdd">
 				<input type="hidden" id="school-id">
 			  </div>
 			  <div class="mb-3">
 				<label for="gender" class="col-form-label">Gender:</label>
-				<div class="form-check">
+				<div class="form-check form-check-inline">
 				  <input class="form-check-input" type="radio" name="gender" id="male">
 				  <label class="form-check-label" for="flexRadioDefault1">
 					Male
 				  </label>
 				</div>
-				<div class="form-check">
+				<div class="form-check form-check-inline">
 				  <input class="form-check-input" type="radio" name="gender" id="female" checked>
 				  <label class="form-check-label" for="flexRadioDefault2">
 					Female
@@ -72,26 +72,26 @@
 				</div>
 			  </div>
 			  <div class="mb-3">
-				<label for="num-participants" class="col-form-label">Age:</label>
-				<input type="text" class="form-control" id="num-participants">
+				<label for="age" class="col-form-label">Age:</label>
+				<input type="text" class="form-control" id="age">
 			  </div>
 			  <div class="mb-3">
-				<label for="num-participants" class="col-form-label">Mobile No.:</label>
-				<input type="text" class="form-control" id="num-participants">
+				<label for="mobileno" class="col-form-label">Mobile No.:</label>
+				<input type="text" class="form-control" id="mobileno">
 			  </div>
 			  <div class="mb-3">
-				<label for="num-participants" class="col-form-label">Body Temp.:</label>
-				<input type="text" class="form-control" id="num-participants">
+				<label for="bodytemp" class="col-form-label">Body Temp.:</label>
+				<input type="text" class="form-control" id="bodytemp">
 			  </div>
 			  <div class="mb-3">
 				<label for="diagnosed" class="col-form-label">COVID-19 Diagnosed:</label>
-				<div class="form-check">
+				<div class="form-check form-check-inline">
 				  <input class="form-check-input" type="radio" name="diagnosed" id="flexRadioDefault1">
 				  <label class="form-check-label" for="flexRadioDefault1">
 					Yes
 				  </label>
 				</div>
-				<div class="form-check">
+				<div class="form-check form-check-inline">
 				  <input class="form-check-input" type="radio" name="diagnosed" id="flexRadioDefault2" checked>
 				  <label class="form-check-label" for="flexRadioDefault2">
 					No
@@ -100,13 +100,13 @@
 			  </div>
 			  <div class="mb-3">
 				<label for="encounter" class="col-form-label">COVID-19 Encounter:</label>
-				<div class="form-check">
+				<div class="form-check form-check-inline">
 				  <input class="form-check-input" type="radio" name="encounter" id="encounter1">
 				  <label class="form-check-label" for="flexRadioDefault1">
 					Yes
 				  </label>
 				</div>
-				<div class="form-check">
+				<div class="form-check form-check-inline">
 				  <input class="form-check-input" type="radio" name="encounter" id="encounter2" checked>
 				  <label class="form-check-label" for="flexRadioDefault2">
 					No
@@ -115,13 +115,13 @@
 			  </div>
 			  <div class="mb-3">
 				<label for="vacinated" class="col-form-label">Vacinated:</label>
-				<div class="form-check">
+				<div class="form-check form-check-inline">
 				  <input class="form-check-input" type="radio" name="vacinated" id="vacinated1">
 				  <label class="form-check-label" for="flexRadioDefault1">
 					Yes
 				  </label>
 				</div>
-				<div class="form-check">
+				<div class="form-check form-check-inline">
 				  <input class="form-check-input" type="radio" name="vacinated" id="vacinated2" checked>
 				  <label class="form-check-label" for="flexRadioDefault2">
 					No
@@ -129,7 +129,7 @@
 				</div>
 			  </div>
 			  <div class="mb-3">
-				<label for="remarks" class="col-form-label">Nationality:</label>
+				<label for="nationality" class="col-form-label">Nationality:</label>
 				<input type="text" class="form-control" id="nationality">
 			  </div>
 			</form>
