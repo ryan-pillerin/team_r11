@@ -1,10 +1,19 @@
 <?php
+	/**
+	 * Database Connection
+	 */
 
-	$dbhost = 'localhost';
-	$dbname = 'school_db';
-	$dbusername = 'root';
-	$dbpassword = '';	
-	
-	$connection = mysqli_connect($dbhost,$dbusername,$dbpassword,$dbname);
+	function openConnection() {
+		$_dbHost = 'localhost';
+		$_dbName = 'test';
+		$_dbUserName = 'root';
+		$_dbPassword = '';
+
+		return mysqli_connect($_dbHost, $_dbUserName, $_dbPassword, $_dbName);
+	}
+
+	function closeConnection($_connection) {
+		$_connection->close();
+	}
 
 ?>
