@@ -64,6 +64,9 @@ function sqlUpdateData($formData, $tableName) {
     return $sql . $set;
 }
 
+/**
+ * SQL Delete Records in the database
+ */
 function sqlDeleteData($formData, $tableName) {
 
 }
