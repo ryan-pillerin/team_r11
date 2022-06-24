@@ -5,7 +5,7 @@
 	
 	//Check connection
 	if(!$connection){
-			die("Connection failed: " . mysqli_connect_error);
+			die("Connection failed: " . mysqli_connect_error());
 	}	
 	
 	$sql = "call sp_updateSchool('" .$_POST["name"] . "'," .
