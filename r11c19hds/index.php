@@ -53,8 +53,7 @@
 			  <div class="mb-3">
 				<label for="name" class="col-form-label">Name:</label>
 				<input type="text" class="form-control" id="name">
-				<input type="hidden" id="isAdd">
-				<input type="hidden" id="school-id">
+				<span class="d-none alert alert-danger mt-1 validateFields" data-name="name"></span>
 			  </div>
 			  <div class="mb-3">
 				<label for="gender" class="col-form-label">Gender:</label>
@@ -74,14 +73,17 @@
 			  <div class="mb-3">
 				<label for="age" class="col-form-label">Age:</label>
 				<input type="text" class="form-control" id="age">
+				<span class="d-none alert alert-danger mt-1 validateFields" data-name="age"></span>
 			  </div>
 			  <div class="mb-3">
 				<label for="mobileno" class="col-form-label">Mobile No.:</label>
 				<input type="text" class="form-control" id="mobileno">
+				<span class="d-none alert alert-danger mt-1 validateFields" data-name="mobileno"></span>
 			  </div>
 			  <div class="mb-3">
 				<label for="bodytemp" class="col-form-label">Body Temp.:</label>
 				<input type="text" class="form-control" id="bodytemp">
+				<span class="d-none alert alert-danger mt-1 validateFields" data-name="bodytemp"></span>
 			  </div>
 			  <div class="mb-3">
 				<label for="diagnosed" class="col-form-label">COVID-19 Diagnosed:</label>
@@ -131,20 +133,19 @@
 			  <div class="mb-3">
 				<label for="nationality" class="col-form-label">Nationality:</label>
 				<input type="text" class="form-control" id="nationality">
+				<span class="d-none alert alert-danger mt-1 validateFields" data-name="nationality"></span>
 			  </div>
 			</form>
 		  </div>
 		  <div class="modal-footer">
 			<button type="button" id="close" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-			<button type="button" id="save" class="btn btn-primary" onClick="addEditRow();">Save</button>
+			<button type="button" id="save" class="btn btn-primary">Save</button>
 		  </div>
 		</div>
 	  </div>
 	</div>
 	
-	
+	<script src="js/_managerecords.js"></script>
 </body>
-
-	<?php include 'common/js.php' ?>
 
 </html>

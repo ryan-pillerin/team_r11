@@ -67,8 +67,14 @@ function sqlUpdateData($formData, $tableName) {
 /**
  * SQL Delete Records in the database
  */
-function sqlDeleteData($formData, $tableName) {
+function sqlDeleteData($parameterCondition, $tableName) {
+    $_connection = openConnection();
 
+    if ( !$_connection ) {
+        die("Connection failed: " . mysqli_connect_error())
+    }
+
+    $sql = "DELETE FROM " . $tableName;
 }
 
 /**
