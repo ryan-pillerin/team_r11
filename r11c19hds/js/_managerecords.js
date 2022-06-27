@@ -4,6 +4,8 @@
  */
 $(function() {
 
+    getRecords();
+
     /**
      * Save Function
      */
@@ -87,6 +89,24 @@ function addRecord(formData) {
              * Refresh the data table for the new record, or attach the record on
              * the very top.
              */
+        }
+    });
+
+}
+
+function getRecords() {
+    
+    $.ajax({
+        type: 'POST',
+        url: 'api/getrecords.php',
+        beforeSend: function() {
+
+        }, success: function( res ) {
+            let htmlData = '';
+            res.map((row) => {
+                console.log(row['userID']);
+            })
+            $('#records').html();
         }
     });
 
