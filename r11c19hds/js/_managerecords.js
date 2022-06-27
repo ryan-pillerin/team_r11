@@ -5,7 +5,7 @@
 $(function() {
 
     /**
-     * Adding of record in the database
+     * Save Function
      */
     $('#save').click(function() {
         /**
@@ -33,10 +33,33 @@ $(function() {
             }
         });
 
-        if (isValid == true) {
-            alert("save");
+        if (isValid == true) {    
+            addRecord({
+                'name': $('#name').val(),
+                'gender': $('#gender:checked').val(),
+                'age': $('#age').val(),
+                'mobileno': $('#mobileno').val(),
+                'bodytemp': $('#bodytemp').val(),
+                'covid19diagnosed': $('#diagnosed:checked').val(),
+                'covid19rncounter': $('#encounter:checked').val(),
+                'vaccinated': $('#vacinated:checked').val(),
+                'nationality': $('#nationality').val()
+            });
         }
 
+    });
+
+    /**
+     * Close Add Form
+     */
+    $("#close,.btn-close").click(function() {
+        let validateFields = $(".validateFields");
+        validateFields.each(function() {
+            let thisVal = $(this);
+            $("#" + thisVal.attr("data-name")).val("");
+            thisVal.removeClass('d-block');
+            thisVal.addClass('d-none');
+        });
     });
 });
 
@@ -45,4 +68,26 @@ $(function() {
  * Function to add a record in the database
  */
 function addRecord(formData) {
+    let loader = `
+        <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+        <span class="visually-hidden">Saving...</span>`;
+    $.ajax({
+        type: "POST",
+        url: "api/addrecords.php",
+        data: formData,
+        beforeSend: function() {
+            $('#save').html(loader).attr({'disabled':'disabled'});
+            $('#close,.btn-close').attr({'disabled':'disabled'});
+        }, success: function( res ) {
+            $('#save').html('Save').removeAttr('disabled');
+            $('#close,.btn-close').removeAttr('disabled');
+            $('#close,.btn-close').trigger('click');
+
+            /**
+             * Refresh the data table for the new record, or attach the record on
+             * the very top.
+             */
+        }
+    });
+
 }
