@@ -58,13 +58,13 @@
 			  <div class="mb-3">
 				<label for="gender" class="col-form-label">Gender:</label>
 				<div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="gender" id="male">
+				  <input class="form-check-input" type="radio" name="gender" id="gender" value="Male">
 				  <label class="form-check-label" for="flexRadioDefault1">
 					Male
 				  </label>
 				</div>
 				<div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="gender" id="female" checked>
+				  <input class="form-check-input" type="radio" name="gender" id="gender" checked value="Female">
 				  <label class="form-check-label" for="flexRadioDefault2">
 					Female
 				  </label>
@@ -88,14 +88,14 @@
 			  <div class="mb-3">
 				<label for="diagnosed" class="col-form-label">COVID-19 Diagnosed:</label>
 				<div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="diagnosed" id="flexRadioDefault1">
-				  <label class="form-check-label" for="flexRadioDefault1">
+				  <input class="form-check-input" type="radio" name="diagnosed" id="diagnosed" value="Yes">
+				  <label class="form-check-label" for="diagnosed">
 					Yes
 				  </label>
 				</div>
 				<div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="diagnosed" id="flexRadioDefault2" checked>
-				  <label class="form-check-label" for="flexRadioDefault2">
+				  <input class="form-check-input" type="radio" name="diagnosed" id="diagnosed" checked value="No">
+				  <label class="form-check-label" for="diagnosed">
 					No
 				  </label>
 				</div>
@@ -103,14 +103,14 @@
 			  <div class="mb-3">
 				<label for="encounter" class="col-form-label">COVID-19 Encounter:</label>
 				<div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="encounter" id="encounter1">
-				  <label class="form-check-label" for="flexRadioDefault1">
+				  <input class="form-check-input" type="radio" name="encounter" id="encounter" value="Yes">
+				  <label class="form-check-label" for="encounter">
 					Yes
 				  </label>
 				</div>
 				<div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="encounter" id="encounter2" checked>
-				  <label class="form-check-label" for="flexRadioDefault2">
+				  <input class="form-check-input" type="radio" name="encounter" id="encounter" checked value="No">
+				  <label class="form-check-label" for="encounter">
 					No
 				  </label>
 				</div>
@@ -118,14 +118,14 @@
 			  <div class="mb-3">
 				<label for="vacinated" class="col-form-label">Vacinated:</label>
 				<div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="vacinated" id="vacinated1">
-				  <label class="form-check-label" for="flexRadioDefault1">
+				  <input class="form-check-input" type="radio" name="vacinated" id="vacinated" value="Yes">
+				  <label class="form-check-label" for="vacinated">
 					Yes
 				  </label>
 				</div>
 				<div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="vacinated" id="vacinated2" checked>
-				  <label class="form-check-label" for="flexRadioDefault2">
+				  <input class="form-check-input" type="radio" name="vacinated" id="vacinated" value="No" checked>
+				  <label class="form-check-label" for="vacinated">
 					No
 				  </label>
 				</div>

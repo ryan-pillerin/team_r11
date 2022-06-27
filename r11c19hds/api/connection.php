@@ -5,7 +5,7 @@
 
 	function openConnection() {
 		$_dbHost = 'localhost';
-		$_dbName = 'test';
+		$_dbName = 'r11c19hds_db';
 		$_dbUserName = 'root';
 		$_dbPassword = '';
 

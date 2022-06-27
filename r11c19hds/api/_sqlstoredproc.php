@@ -33,8 +33,8 @@ function sqlInsertData($formData, $tableName) {
     /**
      * Execute Insert Statement
      */
-    //$result = $_connection->query($sql . $columns . $values);
-    return $sql . $columns . $values;
+    $result = $_connection->query($sql . $columns . $values);
+    return $result;
 }
 
 /**
@@ -71,7 +71,7 @@ function sqlDeleteData($parameterCondition, $tableName) {
     $_connection = openConnection();
 
     if ( !$_connection ) {
-        die("Connection failed: " . mysqli_connect_error())
+        die("Connection failed: " . mysqli_connect_error());
     }
 
     $sql = "DELETE FROM " . $tableName;

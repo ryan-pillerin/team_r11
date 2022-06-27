@@ -20,10 +20,10 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
         "name"              =>  "'" . stripslashes($_POST['name']) . "'",
         "gender"            =>  "'" . $_POST['gender'] . "'",
         "age"               =>  $_POST['age'],
-        "mobile"            =>  "'" . $_POST['mobile'] . "'",
-        "bodytemp"          =>  $_POST['bodyTemp'],
-        "covid19diagnosed"  =>  $_POST['covid19Diagnosed'] == "Yes" ? 1 : 0,
-        "covid19rncounter"  =>  $_POST['covid19Encounter'] == "Yes" ? 1 : 0,
+        "mobile"            =>  "'" . $_POST['mobileno'] . "'",
+        "body_temp"         =>  $_POST['bodytemp'],
+        "covid_diagnosed"   =>  $_POST['covid19diagnosed'] == "Yes" ? 1 : 0,
+        "covid_encounter"   =>  $_POST['covid19rncounter'] == "Yes" ? 1 : 0,
         "vaccinated"        =>  $_POST['vaccinated'] == "Yes" ? 1 : 0,
         "nationality"       =>  "'" . $_POST['nationality'] . "'"
     );
@@ -33,7 +33,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
      */
 
     $sql = array(
-        "sql" => sqlInsertData($formData, '')
+        "sql" => sqlInsertData($formData, 'users')
     );
 
     /**
