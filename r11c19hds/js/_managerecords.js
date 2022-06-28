@@ -89,9 +89,13 @@ function addRecord(formData) {
              * Refresh the data table for the new record, or attach the record on
              * the very top.
              */
+            getRecords();
         }
     });
+}
 
+function showModal(isAdd){
+	$('#addModal').modal('show');
 }
 
 function getRecords() {
@@ -104,9 +108,21 @@ function getRecords() {
         }, success: function( res ) {
             let htmlData = '';
             res.map((row) => {
-                console.log(row['userID']);
+                htmlData += `<tr>`;
+                htmlData += `   <td>${row['name']}</td>`;
+                htmlData += `   <td>${row['gender']}</td>`;
+                htmlData += `   <td>${row['age']}</td>`;
+                htmlData += `   <td>${row['mobile']}</td>`;
+                htmlData += `   <td>${row['body_temp']}</td>`;
+                htmlData += `   <td>${row['covid_diagnosed'] == 1 ? 'Yes' : 'No'}</td>`;
+                htmlData += `   <td>${row['covid_encounter'] == 1 ? 'Yes' : 'No'}</td>`;
+                htmlData += `   <td>${row['vaccinated'] == 1 ? 'Yes' : 'No'}</td>`;
+                htmlData += `   <td>${row['nationality']}</td>`;
+                htmlData += `   <td><button class="btn btn-primary btn-edit" data-id="${row['userID']}">Edit</button></td>`;
+                htmlData += `   <td><button class="btn btn-danger btn-delete" data-id="${row['userID']}">Delete</button></td>`;
+                htmlData += `</tr>`;
             })
-            $('#records').html();
+            $('#records').html(htmlData);
         }
     });
 

@@ -21,12 +21,13 @@
 		<button type="button" class="btn btn-primary" onClick="showModal(true)" style="float: right">Add</button>
 		<input type="text" id="search" class="">
 		<button type="button" class="btn btn-primary" onClick="searchSchool()">Search</button>
-		<table id="school-table" class="table table-responsive table-hover table-dark">
+		<table id="school-table" class="table table-responsive table-hover table-dark mt-2">
 			<thead>
 				<th>Name</th>
 				<th>Gender</th>
 				<th>Age</th>
 				<th>Mobile No.</th>
+				<th>Body Temp.</th>
 				<th>COVID-19 Diagnosed</th>
 				<th>COVID-19 Encounter</th>
 				<th>Vacinated</th>
