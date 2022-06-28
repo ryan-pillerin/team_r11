@@ -95,6 +95,8 @@ function addRecord(formData) {
 }
 
 function showModal(isAdd){
+	$('#isAdd').val(true);
+	$('#addModalLabel').html("Insert Record");
 	$('#addModal').modal('show');
 }
 
@@ -104,7 +106,7 @@ function getRecords() {
         type: 'POST',
         url: 'api/getrecords.php',
         beforeSend: function() {
-
+            console.log('Retrieving records...');
         }, success: function( res ) {
             let htmlData = '';
             res.map((row) => {
@@ -123,7 +125,47 @@ function getRecords() {
                 htmlData += `</tr>`;
             })
             $('#records').html(htmlData);
+
+            $('.btn-edit').click(function() {
+                let userID = $(this).attr('data-id');
+                /**
+                 * Retrieve the record based on User ID
+                 */
+                
+            });
+
+            /**
+             * Delete Record Function
+             */
+            $('.btn-delete').click(function() {
+                let userId = $(this).attr('data-id');
+                let toDelete = confirm("Are you sure you want to delete this record?");
+
+                if (toDelete == true) {
+                    deleteRecord({
+                        userID: userId
+                    });
+                }
+            })
         }
     });
+
+}
+
+/**
+ * Delete Record 
+ */
+function deleteRecord(params) {
+
+    $.ajax({
+        type: 'POST',
+        url: 'api/deleterecords.php',
+        data: params, 
+        beforeSend: function() {
+            console.log('deleting records...');
+        }, success: function( res ) {
+            getRecords();
+        }
+    })
 
 }
