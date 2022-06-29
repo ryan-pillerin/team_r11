@@ -2,7 +2,7 @@
 
 include '_sqlstoredproc.php';
 
-$results = sqlStoredProc('sp_getrecords');
+$results = sqlStoredProc('sp_getrecords', NULL);
 
 $records = array();
 while($row = mysqli_fetch_assoc($results)) {

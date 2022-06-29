@@ -82,10 +82,8 @@ function sqlDeleteData($condition, $tableName) {
 /**
  * SQL Stored Procedure
  * procedureName = Store Proc Name in SQL
- * parameters = is the values inserted into the stored proc, it should
- * be declared as an array.
  */
-function sqlStoredProc($procedureName) {
+function sqlStoredProc($procedureName, $condition) {
     
     $_connection = openConnection();
 
@@ -93,20 +91,15 @@ function sqlStoredProc($procedureName) {
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    $sql = "CALL " . $procedureName . "();";
-    /*$_rowCount = count($parameters);
-    $_indexRowCount = 0;
-    $params = "";
-    foreach( $parameters as $key => $val ) {
-        if ( $_indexRowCount < ($_rowCount - 1) ) {
-            $params .= $val . ", ";
-        } else {
-            $params .= $val . ")";
-        }
-    }*/
-    
+    if ( $condition ) {
+        $sql = "CALL " . $procedureName . "(". $condition . ");";
+    } else {
+        $sql = "CALL " . $procedureName . "();";
+    }
     $result = $_connection->query($sql);
     return $result;
     //return $sql;
 }
+
+
 ?>

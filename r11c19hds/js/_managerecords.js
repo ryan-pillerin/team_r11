@@ -131,7 +131,6 @@ function getRecords() {
                 /**
                  * Retrieve the record based on User ID
                  */
-                
             });
 
             /**
@@ -166,6 +165,20 @@ function deleteRecord(params) {
         }, success: function( res ) {
             getRecords();
         }
-    })
+    });
+}
+
+function getRecordById(param) {
+
+    $.ajax({
+        type: 'POST',
+        url: 'api/getrecordbyid.php',
+        data: params, 
+        beforeSend: function() {
+            console.log('retrieving record by user id...');
+        }, success: function( res ) {
+            
+        }
+    });
 
 }
