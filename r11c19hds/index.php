@@ -19,8 +19,9 @@
 	
 	<div class="container-fluid">
 		<button type="button" class="btn btn-primary" onClick="showModal(true)" style="float: right">Add</button>
-		<input type="text" id="search" class="">
-		<button type="button" class="btn btn-primary" onClick="searchSchool()">Search</button>
+		<label for="searchname" class="form-label mt-3">Search Name</label>
+  		<input type="text" class="form-control mb-2" id="searchname" placeholder="Enter Name">
+		<button type="button" class="btn btn-primary" id="btnSearch">Search</button>
 		<table id="school-table" class="table table-responsive table-hover table-dark mt-2">
 			<thead>
 				<th>Name</th>

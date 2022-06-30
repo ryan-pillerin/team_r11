@@ -64,7 +64,20 @@ $(function() {
                 });
             }
         }
+    });
 
+    $('#searchname').keydown(function(event) {
+        if (event.keyCode == 13) {
+            searchName({
+                'name': $('#searchname').val()
+            });
+        }
+    });
+    
+    $('#btnSearch').click(function() {
+        searchName({
+            'name': $('#searchname').val()
+        });
     });
 
     /**
@@ -171,7 +184,7 @@ function getRecords() {
                         userID: userId
                     });
                 }
-            })
+            });
         }
     });
 
@@ -249,4 +262,55 @@ function updateRecord(params) {
             getRecords();
         }
     });
+}
+
+function searchName(searchText) {
+    $.ajax({
+        type: 'POST',
+        url: 'api/getrecordbyname.php',
+        data: searchText,
+        success: function( res ) {
+            let htmlData = '';
+            res.map((row) => {
+                htmlData += `<tr>`;
+                htmlData += `   <td>${row['name']}</td>`;
+                htmlData += `   <td>${row['gender']}</td>`;
+                htmlData += `   <td>${row['age']}</td>`;
+                htmlData += `   <td>${row['mobile']}</td>`;
+                htmlData += `   <td>${row['body_temp']}</td>`;
+                htmlData += `   <td>${row['covid_diagnosed'] == 1 ? 'Yes' : 'No'}</td>`;
+                htmlData += `   <td>${row['covid_encounter'] == 1 ? 'Yes' : 'No'}</td>`;
+                htmlData += `   <td>${row['vaccinated'] == 1 ? 'Yes' : 'No'}</td>`;
+                htmlData += `   <td>${row['nationality']}</td>`;
+                htmlData += `   <td><button class="btn btn-primary btn-edit" data-id="${row['userID']}">Edit</button></td>`;
+                htmlData += `   <td><button class="btn btn-danger btn-delete" data-id="${row['userID']}">Delete</button></td>`;
+                htmlData += `</tr>`;
+            });
+            $('#records').html(htmlData);
+
+            $('.btn-edit').click(function() {
+                let userID = $(this).attr('data-id');
+                /**
+                 * Retrieve the record based on User ID
+                 */
+                 getRecordById({
+                    userID: userID
+                 })
+            });
+
+            /**
+             * Delete Record Function
+             */
+            $('.btn-delete').click(function() {
+                let userId = $(this).attr('data-id');
+                let toDelete = confirm("Are you sure you want to delete this record?");
+
+                if (toDelete == true) {
+                    deleteRecord({
+                        userID: userId
+                    });
+                }
+            });
+        }
+    })
 }
