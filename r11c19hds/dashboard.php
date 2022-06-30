@@ -14,8 +14,6 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" 
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	
-	<script src="js/crud.js"></script>	
-	
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
 	<script src="js/dashboard.js"></script>
 	<link href="css/dashboard.css" rel="stylesheet" />
@@ -31,7 +29,7 @@
 		<div class="col-md-4">
 		  <div class="card-counter primary">
 			<i class="fa fa-code-fork"></i>
-			<span class="count-numbers" id="school-count">0</span>
+			<span class="count-numbers" id="covid-encounter-count">0</span>
 			<span class="count-name">COVID-19 ENCOUNTER</span>
 		  </div>
 		</div>
@@ -39,7 +37,7 @@
 		<div class="col-md-4">
 		  <div class="card-counter info">
 			<i class="fa fa-ticket"></i>
-			<span class="count-numbers" id="course-count">0</span>
+			<span class="count-numbers" id="vaccinated-count">0</span>
 			<span class="count-name">VACCINATED</span>
 		  </div>
 		</div>
@@ -47,7 +45,7 @@
 		<div class="col-md-4">
 		  <div class="card-counter danger">
 			<i class="fa fa-database"></i>
-			<span class="count-numbers" id="training-count">0</span>
+			<span class="count-numbers" id="fever-count">0</span>
 			<span class="count-name">FEVER</span>
 		  </div>
 		</div>
@@ -59,7 +57,7 @@
 		<div class="col-md-4">
 		  <div class="card-counter danger">
 			<i class="fa fa-code-fork"></i>
-			<span class="count-numbers" id="school-count">0</span>
+			<span class="count-numbers" id="adult-count">0</span>
 			<span class="count-name">ADULT</span>
 		  </div>
 		</div>
@@ -67,7 +65,7 @@
 		<div class="col-md-4">
 		  <div class="card-counter success">
 			<i class="fa fa-ticket"></i>
-			<span class="count-numbers" id="course-count">0</span>
+			<span class="count-numbers" id="minor-count">0</span>
 			<span class="count-name">MINOR</span>
 		  </div>
 		</div>
@@ -75,7 +73,7 @@
 		<div class="col-md-4">
 		  <div class="card-counter primary">
 			<i class="fa fa-database"></i>
-			<span class="count-numbers" id="training-count">0</span>
+			<span class="count-numbers" id="foreigner-count">0</span>
 			<span class="count-name">FOREIGNER</span>
 		  </div>
 		</div>
