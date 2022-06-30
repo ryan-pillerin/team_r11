@@ -40,7 +40,7 @@ function sqlInsertData($formData, $tableName) {
 /**
  * SQL Update Records in the database
  */
-function sqlUpdateData($formData, $tableName) {
+function sqlUpdateData($formData, $tableName, $userID) {
 
     $_connection = openConnection();
 
@@ -60,8 +60,8 @@ function sqlUpdateData($formData, $tableName) {
         }
         $_indexRowCount++;
     }
-    //$result = $_connection->query($sql . $columns . $values);
-    return $sql . $set;
+    $result = $_connection->query($sql . $set . " WHERE userID = " . $userID);
+    return $result;
 }
 
 /**

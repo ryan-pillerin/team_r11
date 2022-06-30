@@ -52,6 +52,7 @@
 			  <div class="mb-3">
 				<label for="name" class="col-form-label">Name:</label>
 				<input type="text" class="form-control" id="name">
+				<input type="hidden" id="isAdd" value="true" data-id="">
 				<span class="d-none alert alert-danger mt-1 validateFields" data-name="name"></span>
 			  </div>
 			  <div class="mb-3">

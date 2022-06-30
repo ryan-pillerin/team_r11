@@ -13,30 +13,10 @@ $(function() {
         /**
          * Check all records if they are not null
          */
-        let validateFields = $(".validateFields");
-        let isValid = true;
-        validateFields.each(function() {
-            let thisVal = $(this);
-            if ( $("#" + thisVal.attr("data-name")).val() == "" ) {
-                isValid = false;
-                let fieldName = thisVal.attr("data-name")
-                if (fieldName == "mobileno") {
-                    fieldName = "Mobile Number";
-                } else if ( fieldName == "bodytemp" ) {
-                    fieldName = "Body Temp";
-                }
 
-                thisVal.text("* " + fieldName.charAt(0).toUpperCase() + fieldName.slice(1) + " is required field!");
-                thisVal.removeClass('d-none');
-                thisVal.addClass('d-block');
-            } else {
-                thisVal.removeClass('d-block');
-                thisVal.addClass('d-none');
-            }
-        });
-
-        if (isValid == true) {    
-            addRecord({
+        if ( $("#isAdd").val() == "false" ) {
+            updateRecord({
+                'userID': $('#isAdd').attr('data-id'),
                 'name': $('#name').val(),
                 'gender': $('#gender:checked').val(),
                 'age': $('#age').val(),
@@ -47,6 +27,42 @@ $(function() {
                 'vaccinated': $('#vacinated:checked').val(),
                 'nationality': $('#nationality').val()
             });
+        } else {
+            let validateFields = $(".validateFields");
+            let isValid = true;
+            validateFields.each(function() {
+                let thisVal = $(this);
+                if ( $("#" + thisVal.attr("data-name")).val() == "" ) {
+                    isValid = false;
+                    let fieldName = thisVal.attr("data-name")
+                    if (fieldName == "mobileno") {
+                        fieldName = "Mobile Number";
+                    } else if ( fieldName == "bodytemp" ) {
+                        fieldName = "Body Temp";
+                    }
+
+                    thisVal.text("* " + fieldName.charAt(0).toUpperCase() + fieldName.slice(1) + " is required field!");
+                    thisVal.removeClass('d-none');
+                    thisVal.addClass('d-block');
+                } else {
+                    thisVal.removeClass('d-block');
+                    thisVal.addClass('d-none');
+                }
+            });
+
+            if (isValid == true) {    
+                addRecord({
+                    'name': $('#name').val(),
+                    'gender': $('#gender:checked').val(),
+                    'age': $('#age').val(),
+                    'mobileno': $('#mobileno').val(),
+                    'bodytemp': $('#bodytemp').val(),
+                    'covid19diagnosed': $('#diagnosed:checked').val(),
+                    'covid19rncounter': $('#encounter:checked').val(),
+                    'vaccinated': $('#vacinated:checked').val(),
+                    'nationality': $('#nationality').val()
+                });
+            }
         }
 
     });
@@ -95,11 +111,18 @@ function addRecord(formData) {
 }
 
 function showModal(isAdd){
-	$('#isAdd').val(true);
-	$('#addModalLabel').html("Insert Record");
+	$('#isAdd').val(isAdd);
+    if ( isAdd == false ) {
+        $('#addModalLabel').html("Edit Record");
+    } else {
+	    $('#addModalLabel').html("Insert Record");
+    }
 	$('#addModal').modal('show');
 }
 
+/**
+ * Get all records
+ */
 function getRecords() {
     
     $.ajax({
@@ -123,7 +146,7 @@ function getRecords() {
                 htmlData += `   <td><button class="btn btn-primary btn-edit" data-id="${row['userID']}">Edit</button></td>`;
                 htmlData += `   <td><button class="btn btn-danger btn-delete" data-id="${row['userID']}">Delete</button></td>`;
                 htmlData += `</tr>`;
-            })
+            });
             $('#records').html(htmlData);
 
             $('.btn-edit').click(function() {
@@ -131,6 +154,9 @@ function getRecords() {
                 /**
                  * Retrieve the record based on User ID
                  */
+                 getRecordById({
+                    userID: userID
+                 })
             });
 
             /**
@@ -168,17 +194,59 @@ function deleteRecord(params) {
     });
 }
 
+/**
+ * Get Record by ID
+ */
 function getRecordById(param) {
 
     $.ajax({
         type: 'POST',
         url: 'api/getrecordbyid.php',
-        data: params, 
+        data: param, 
         beforeSend: function() {
             console.log('retrieving record by user id...');
         }, success: function( res ) {
-            
+            res.map(function(row) {
+                $("#isAdd").attr({'data-id': row['userID']});
+                $('#name').val(row['name']);
+                $('input:radio[name="gender"][value="' + row['gender'] + '"]').prop('checked', true);
+                $('#age').val(row['age']);
+                $('#bodytemp').val(row['body_temp']);
+                $('#mobileno').val(row['mobile']);
+                if ( row['covid_diagnosed'] == 1 ) {
+                    $('input:radio[name="diagnosed"][value="Yes"]').prop('checked', true);
+                } else {
+                    $('input:radio[name="diagnosed"][value="No"]').prop('checked', true);
+                }
+
+                if ( row['covid_encounter'] == 1) {
+                    $('input:radio[name="encounter"][value="Yes"]').prop('checked', true);
+                } else {
+                    $('input:radio[name="encounter"][value="Yes"]').prop('checked', true);
+                }
+
+                if ( row['vaccinated'] == 1) {
+                    $('input:radio[name="vacinated"][value="Yes"]').prop('checked', true);
+                } else {
+                    $('input:radio[name="vacinated"][value="Yes"]').prop('checked', true);
+                }
+
+                $('#nationality').val(row['nationality']);
+            });
+            showModal(false);
         }
     });
 
+}
+
+function updateRecord(params) {
+    $.ajax({
+        type: 'POST',
+        url: 'api/updaterecord.php',
+        data: params,
+        success: function( res ) {
+            $('#close,.btn-close').trigger('click');
+            getRecords();
+        }
+    });
 }
